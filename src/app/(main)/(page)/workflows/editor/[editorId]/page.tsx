@@ -1,12 +1,11 @@
-import React from 'react'
+// import React from 'react'
 
-type props = {}
+// type props = {}
 
-const page = () => {
-  return <div className = 'h-full'>
-    <Editorprovider> </Editorprovider>
-     </div>
-  </div>
-}
+// const page = () => {
+//   return <div className = 'h-full'>
+//     <Editorprovider> </Editorprovider>
+//   </div>
+// }
 
-export default page
+// export default page

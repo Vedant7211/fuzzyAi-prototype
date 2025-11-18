@@ -3,6 +3,7 @@ import { EditorNodeType } from '@/lib/types'
 import { useEditor } from '@/provider/editor-provider'
 import { useNodeConnection } from '@/provider/connection-provider'
 import React, { useCallback } from 'react'
+import { Tabs } from '@/components/UI/tabs'
 
 
 type Props = {

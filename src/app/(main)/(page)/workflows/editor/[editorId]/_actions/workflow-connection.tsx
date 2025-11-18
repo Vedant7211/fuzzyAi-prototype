@@ -23,18 +23,33 @@ export const onCreateNodeEdges = async (
     if (flow) return {message: 'Flow created successfully'}
 }
 
-
-export const onFlowPublish = async (
-    workflowId: string,
-    state: any,
-) => {
-    console.log(state)
-    const published = await db.workflows.update({
-        where: {id: workflowId},
-        data: { 
-            publish: state},
+export const onGetNodesEdges = async (flowId: string) => {
+    const flow = await db.workflows.findUnique({
+        where: {
+            id: flowId,
+        },
     })
-
-    if(published.publish) return {message: 'Workflow published successfully'}
-    return {message: 'Workflow not published'}
+    
+    if (flow) {
+        return {
+            nodes: flow.nodes,
+            edges: flow.edges,
+        }
+    }
 }
+
+
+// export const onFlowPublish = async (
+//     workflowId: string,
+//     state: any,
+// ) => {
+//     console.log(state)
+//     const published = await db.workflows.update({
+//         where: {id: workflowId},
+//         data: { 
+//             publish: state},
+//     })
+
+//     if(published.publish) return {message: 'Workflow published successfully'}
+//     return {message: 'Workflow not published'}
+// }

@@ -30,6 +30,7 @@ export type EditorCanvasTypes =
   | 'Slack'
   | 'Google Drive'
   | 'Notion'
+  | 'Discord'
   | 'Custom Webhook'
   | 'Google Calendar'
   | 'Trigger'
@@ -41,7 +42,7 @@ export type EditorCanvasCardType = {
   description: string
   completed: boolean
   current: boolean
-  metadata: any
+  metadata: Record<string, unknown>
   type: EditorCanvasTypes
 }
 
