@@ -1,10 +1,10 @@
 'use client'
 
 import { Button } from '@/components/UI/button'
-import {useNodeConnectiom} from '@/provider/editor-provider'
 import { useEditor } from '@/provider/editor-provider'
+import { useNodeConnection } from '@/provider/connection-provider'
 import { usePathname } from 'next/navigation'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { onCreateNodeEdges } from '../_actions/workflow-connection'
 import { toast } from 'sonner'
 
@@ -14,26 +14,26 @@ type Props = {
     nodes: any[]
 }
 
-const FlowInstance = (props: Props) => {
+const FlowInstance = ({ children, edges, nodes }: Props) => {
 const pathname = usePathname()
 const [isFlow , setisFlow] = useState([])
-const {nodeConnection} = useNodeConnectiom()
+const {nodeConnection} = useNodeConnection()
 
 const onFlowAutomation = useCallback(async () => {
     const flow = await onCreateNodeEdges(
         pathname.split('/').pop()!,
         JSON.stringify(nodes),
         JSON.stringify(edges),
-        JSON.stringify(isFlow),
         pathname,
     )
 
     if (flow) toast.success(flow.message)
-}, [nodeConnection])
+}, [nodeConnection, nodes, edges, pathname])
 
 const onPublishWorkflow = useCallback(async () => {
-    const response = await onFlowPublish(pathname.split('/').pop()!, true)
-    if(response) toast.success(response.message)
+    // const response = await onFlowPublish(pathname.split('/').pop()!, true)
+    // if(response) toast.success(response.message)
+    toast.success('Publish functionality not implemented yet')
 }, [])
 
 return (
