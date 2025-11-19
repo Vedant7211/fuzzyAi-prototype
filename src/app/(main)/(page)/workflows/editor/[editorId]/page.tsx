@@ -1,11 +1,16 @@
-// import React from 'react'
+import React from 'react'
 
-// type props = {}
+type Props = {
+  params: Promise<{ editorId: string }>
+}
 
-// const page = () => {
-//   return <div className = 'h-full'>
-//     <Editorprovider> </Editorprovider>
-//   </div>
-// }
+const EditorPage = async ({ params }: Props) => {
+  const { editorId } = await params
+  return (
+    <div className='h-full'>
+      <p>Editor for workflow: {editorId}</p>
+    </div>
+  )
+}
 
-// export default page
+export default EditorPage

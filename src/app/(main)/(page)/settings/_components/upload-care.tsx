@@ -40,19 +40,19 @@ const UploadCareButton = ({ onUpload }: Props) => {
 
   return (
     <div>
-      {/* @ts-ignore */}
+      {/* @ts-expect-error - Custom web component from uploadcare blocks */}
       <lr-config
         ctx-name="my-uploader"
         pubkey="a9428ff5ff90ae7a64eb"
       />
 
-      {/* @ts-ignore */}
+      {/* @ts-expect-error - Custom web component from uploadcare blocks */}
       <lr-file-uploader-regular
         ctx-name="my-uploader"
         css-src={`${process.env.NEXT_PUBLIC_UPLOADCARE_CSS_SRC || ''}${LR.PACKAGE_VERSION}${process.env.NEXT_PUBLIC_UPLOADCARE_CSS_SRC_PACKAGE || ''}`}
       />
 
-      {/* @ts-ignore */}
+      {/* @ts-expect-error - Custom web component from uploadcare blocks */}
       <lr-upload-ctx-provider
         ctx-name="my-uploader"
         ref={ctxProviderRef}
