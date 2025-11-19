@@ -1,39 +1,45 @@
 'use client'
 import { createContext, useContext, useState } from 'react'
 
+export type DiscordNode = {
+  webhookURL: string
+  content: string
+  webhookName: string
+  guildName: string
+}
+
+export type NotionNode = {
+  accessToken: string
+  databaseId: string
+  workspaceName: string
+  content: ''
+}
+
+export type SlackNode = {
+  appId: string
+  authedUserId: string
+  authedUserToken: string
+  slackAccessToken: string
+  botUserId: string
+  teamId: string
+  teamName: string
+  content: string
+}
+
 export type ConnectionProviderProps = {
-  discordNode: {
-    webhookURL: string
-    content: string
-    webhookName: string
-    guildName: string
-  }
-  setDiscordNode: React.Dispatch<React.SetStateAction<any>>
-  googleNode: {}[]
-  setGoogleNode: React.Dispatch<React.SetStateAction<any>>
-  notionNode: {
-    accessToken: string
-    databaseId: string
-    workspaceName: string
-    content: ''
-  }
+  discordNode: DiscordNode
+  setDiscordNode: React.Dispatch<React.SetStateAction<DiscordNode>>
+  googleNode: object[]
+  setGoogleNode: React.Dispatch<React.SetStateAction<object[]>>
+  notionNode: NotionNode
   workflowTemplate: {
     discord?: string
     notion?: string
     slack?: string
   }
-  setNotionNode: React.Dispatch<React.SetStateAction<any>>
-  slackNode: {
-    appId: string
-    authedUserId: string
-    authedUserToken: string
-    slackAccessToken: string
-    botUserId: string
-    teamId: string
-    teamName: string
-    content: string
-  }
-  setSlackNode: React.Dispatch<React.SetStateAction<any>>
+  setNotionNode: React.Dispatch<React.SetStateAction<NotionNode>>
+  slackNode: SlackNode
+  setSlackNode: React.Dispatch<React.SetStateAction<SlackNode>>
   setWorkFlowTemplate: React.Dispatch<
     React.SetStateAction<{
       discord?: string
